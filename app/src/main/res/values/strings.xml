@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">vkphotov2</string>
+    <string name="auth_activity_title">Авторизация</string>
+    <string name="photos_grid_activity_title">Фотографии</string>
+    <string name="fullscreen_photo_activity_title">Фотография</string>
+    <string name="no_photo_message">No photo to show</string>
+</resources>
