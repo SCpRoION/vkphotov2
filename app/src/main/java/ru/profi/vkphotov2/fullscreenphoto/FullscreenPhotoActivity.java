@@ -26,7 +26,7 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
 
         // Настройка свапйпинга
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        ImagePagerAdapter adapter = new ImagePagerAdapter();
+        ImagePagerAdapter adapter = new ImagePagerAdapter(presenter);
         viewPager.setAdapter(adapter);
 
         // Показать выбранную фотографию
@@ -50,6 +50,13 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
     }
 
     private class ImagePagerAdapter extends PagerAdapter {
+
+        PhotoPresenter presenter;
+
+        public ImagePagerAdapter(PhotoPresenter presenter) {
+            this.presenter = presenter;
+        }
+
         @Override
         public int getCount() {
             return presenter.photoCount();
