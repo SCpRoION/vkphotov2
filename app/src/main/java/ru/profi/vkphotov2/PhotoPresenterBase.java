@@ -56,14 +56,31 @@ public abstract class PhotoPresenterBase {
             try {
                 // Попытаться получить закешированное изображение по ссылке
                 Photo photo = ProfilePhotos.getProfilePhoto(photoId);
-                img = photo.getCached(url[0]);
+                img = photo.getCached(url[0] + size);
                 // Если закешированного изображения нет, то загрузить его
                 if (img == null) {
+                    // Загружаем размеры изображения
                     InputStream in = new java.net.URL(url[0]).openStream();
-                    BitmapFactory.Options finalOptions = new BitmapFactory.Options();
-                    finalOptions.inSampleSize = 1;
-                    img = BitmapFactory.decodeStream(in, null, finalOptions);
-                    photo.addToCache(url[0], img);
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    img = BitmapFactory.decodeStream(in, null, options);
+                    int imageWidth = options.outWidth;
+
+                    // Масштабируем ширину загружаемого изображения
+                    int inSampleSize = 1;
+                    if (imageWidth > size) {
+                        final int halfWidth = imageWidth / 2;
+                        while (halfWidth / inSampleSize >= size) {
+                            inSampleSize *= 2;
+                        }
+                    }
+                    in.close();
+
+                    // Загружаем изображение
+                    in = new java.net.URL(url[0]).openStream();
+                    options.inJustDecodeBounds = false;
+                    img = BitmapFactory.decodeStream(in, null, options);
+                    photo.addToCache(url[0] + size, img);
                 }
                 img = scaleBitmap(img, size);
             } catch (Exception e) {
