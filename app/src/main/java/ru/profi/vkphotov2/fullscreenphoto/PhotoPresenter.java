@@ -10,9 +10,9 @@ import ru.profi.vkphotov2.profilephotos.ProfilePhotos;
  */
 public class PhotoPresenter extends PhotoPresenterBase {
 
-    private FullscreenPhotoActivity view;   /** Активити для отображения */
+    private PhotoView view;   /** Активити для отображения */
 
-    public PhotoPresenter(FullscreenPhotoActivity view) {
+    public PhotoPresenter(PhotoView view) {
         this.view = view;
     }
 

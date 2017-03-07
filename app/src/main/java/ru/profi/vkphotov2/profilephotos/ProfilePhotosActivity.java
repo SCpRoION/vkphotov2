@@ -1,5 +1,6 @@
 package ru.profi.vkphotov2.profilephotos;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 import ru.profi.vkphotov2.R;
 
-public class ProfilePhotosActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProfilePhotosActivity extends AppCompatActivity implements View.OnClickListener, ProfilePhotosView {
 
     private ProfilePhotosPresenter presenter;
     private PhotosGridLayout grid;
@@ -26,41 +27,33 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
         presenter.activityCreated();
     }
 
-    /**
-     * Показать сообщение об отсутствии фотографий
-     */
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
     public void showNoPhotoMessage() {
         showMessage(R.string.no_photo_message);
     }
 
-    /**
-     * Очистить сетку фотографий
-     */
+    @Override
     public void clearGrid() {
         grid.removeAllViews();
     }
 
-    /**
-     * Узнать размер активной области сетки в пикселях
-     * @return размер активной области сетки в пикселях
-     */
+    @Override
     public int getGridActiveWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels -
                 grid.getPaddingLeft() - grid.getPaddingRight();
     }
 
-    /**
-     * Узнать количество колонок сетки
-     * @return количество колонок сетки
-     */
+    @Override
     public int getGridColumnCount() {
         return grid.getColumnCount();
     }
 
-    /**
-     * Добавить форму для добавления фотографии
-     * @param id идентификатор объекта
-     */
+    @Override
     public void addImageView(int id) {
         ImageView imageView = new ImageView(ProfilePhotosActivity.this);
         imageView.setId(id);
@@ -68,11 +61,7 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
         grid.addView(imageView);
     }
 
-    /**
-     * Показать фотографию с заданным идентификатором
-     * @param photo фотография
-     * @param id идентификатор фотографии
-     */
+    @Override
     public void showPhoto(Bitmap photo, int id) {
         ImageView imageView = (ImageView) findViewById(id);
         imageView.setImageBitmap(photo);

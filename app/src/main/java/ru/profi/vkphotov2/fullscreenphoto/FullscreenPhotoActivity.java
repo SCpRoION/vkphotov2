@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import ru.profi.vkphotov2.R;
 
-public class FullscreenPhotoActivity extends AppCompatActivity {
+public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoView {
 
     public static final String EXTRA_PHOTO_ID = "photo_id";     // Ключ для передаваемого в интенте идентификатора фотографии
     public PhotoPresenter presenter;
@@ -34,21 +34,14 @@ public class FullscreenPhotoActivity extends AppCompatActivity {
         viewPager.setCurrentItem(photoId);
     }
 
-    /**
-     * Узнать ширину активной области окна
-     * @return ширина активной области окна
-     */
+    @Override
     public int getActiveWidth() {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         return metrics.widthPixels;
     }
 
-    /**
-     * Показать фотографию с заданным идентификатором
-     * @param photo фотография
-     * @param id идентификатор фотографии
-     */
+    @Override
     public void showPhoto(Bitmap photo, int id) {
         ImageView imageView = (ImageView) findViewById(id);
         if (imageView != null) {

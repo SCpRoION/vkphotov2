@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import ru.profi.vkphotov2.AuthorizationActivity;
 import ru.profi.vkphotov2.PhotoPresenterBase;
 import ru.profi.vkphotov2.fullscreenphoto.FullscreenPhotoActivity;
 import ru.profi.vkphotov2.fullscreenphoto.Photo;
@@ -17,9 +16,9 @@ import ru.profi.vkphotov2.social.APIManager;
  */
 public class ProfilePhotosPresenter extends PhotoPresenterBase {
 
-    private ProfilePhotosActivity view;   /** Активити для отображения */
+    private ProfilePhotosView view;   /** Вьюха для отображения */
 
-    public ProfilePhotosPresenter(ProfilePhotosActivity view) {
+    public ProfilePhotosPresenter(ProfilePhotosView view) {
         this.view = view;
     }
 
@@ -59,7 +58,7 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
      * @param id идентификатор выбранной фотографии
      */
     public void photoSelected(int id) {
-        Intent intent = new Intent(view, FullscreenPhotoActivity.class);
+        Intent intent = new Intent(view.getContext(), FullscreenPhotoActivity.class);
         intent.putExtra(FullscreenPhotoActivity.EXTRA_PHOTO_ID, id);
         view.startActivity(intent);
     }
