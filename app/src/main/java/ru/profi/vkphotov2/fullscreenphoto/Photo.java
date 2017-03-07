@@ -3,6 +3,7 @@ package ru.profi.vkphotov2.fullscreenphoto;
 import android.graphics.Bitmap;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,8 +12,14 @@ import java.util.Set;
  * Created by Kamo Spertsyan on 24.02.2017.
  */
 public class Photo {
-    public HashMap<Integer, String> urls = new HashMap<>();         // Ссылки на фотографию (ширина - ссылка)
-    public HashMap<String, Bitmap> cache = new HashMap<>();         // Уже загруженные изображения
+    private final int cacheSize = 2;                          // Размер кэша фотографий
+    public HashMap<Integer, String> urls = new HashMap<>();   // Ссылки на фотографию (ширина - ссылка)
+    public Map<String, Bitmap> cache = new LinkedHashMap<String, Bitmap>(cacheSize, 0.75f, true) {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, Bitmap> eldest) {
+            return size() > cacheSize;
+        }
+    };                                                        // Уже загруженные фотографии
 
     /**
      * Получит ссылку на первую фотографию, большее по размерам указанной ширины
