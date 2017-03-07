@@ -1,6 +1,7 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
 import android.graphics.Bitmap;
+import android.util.LruCache;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -12,14 +13,12 @@ import java.util.Set;
  * Created by Kamo Spertsyan on 24.02.2017.
  */
 public class Photo {
-    private final int cacheSize = 2;                          // Размер кэша фотографий
     public HashMap<Integer, String> urls = new HashMap<>();   // Ссылки на фотографию (ширина - ссылка)
-    public Map<String, Bitmap> cache = new LinkedHashMap<String, Bitmap>(cacheSize, 0.75f, true) {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, Bitmap> eldest) {
-            return size() > cacheSize;
+    public LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(1024 * 1024 * 1024) {
+        protected int sizeOf(String key, Bitmap value) {
+            return value.getByteCount();
         }
-    };                                                        // Уже загруженные фотографии
+    };
 
     /**
      * Получит ссылку на первую фотографию, большее по размерам указанной ширины
@@ -70,9 +69,6 @@ public class Photo {
      * @return закешированное изображение, если оно есть, или null
      */
     public Bitmap getCached(String url) {
-        if (cache.containsKey(url)) {
-            return cache.get(url);
-        }
-        return null;
+        return cache.get(url);
     }
 }
