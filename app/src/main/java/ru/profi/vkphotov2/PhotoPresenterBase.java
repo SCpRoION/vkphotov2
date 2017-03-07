@@ -17,6 +17,14 @@ import ru.profi.vkphotov2.profilephotos.ProfilePhotos;
 public abstract class PhotoPresenterBase {
 
     /**
+     * Методы жизненного цикла
+     */
+    public abstract void onCreate();
+    public abstract void onPause();
+    public abstract void onResume();
+    public abstract void onDestroy();
+
+    /**
      * Загрузить фотографию по ссылке
      * @param url ссылка на фотографию
      * @param id идентификатор фотографии

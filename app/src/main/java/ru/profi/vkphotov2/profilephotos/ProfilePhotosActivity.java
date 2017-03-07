@@ -24,7 +24,7 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
         grid = (PhotosGridLayout) findViewById(R.id.preview_grid);
 
         presenter = new ProfilePhotosPresenter(this);
-        presenter.activityCreated();
+        presenter.onCreate();
     }
 
     @Override

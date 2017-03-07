@@ -22,10 +22,8 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
         this.view = view;
     }
 
-    /**
-     * Актиновность создана
-     */
-    public void activityCreated() {
+    @Override
+    public void onCreate() {
         // Если фотографии уже были загружены, то не надо этого делать снова
         if (ProfilePhotos.getProfilePhotoCount() > 0) {
             photoInfoUploadFinished();
@@ -46,6 +44,21 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
                 photoInfoUploadFinished();
             }
         }.execute();
+    }
+
+    @Override
+    public void onPause() {
+
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 
     @Override

@@ -35,6 +35,26 @@ public class PhotoPresenter extends PhotoPresenterBase {
     }
 
     @Override
+    public void onCreate() {
+
+    }
+
+    @Override
+    public void onPause() {
+
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+    @Override
     protected void photoUploaded(Bitmap photo, int photoId) {
         view.showPhoto(photo, photoId);
     }
