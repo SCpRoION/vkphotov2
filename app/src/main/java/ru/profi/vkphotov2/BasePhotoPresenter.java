@@ -18,7 +18,7 @@ import ru.profi.vkphotov2.profilephotos.ProfilePhotos;
 /**
  * Created by Kamo Spertsyan on 26.02.2017.
  */
-public abstract class PhotoPresenterBase implements LoaderManager.LoaderCallbacks<Bitmap> {
+public abstract class BasePhotoPresenter implements LoaderManager.LoaderCallbacks<Bitmap> {
 
     /**
      * Методы жизненного цикла

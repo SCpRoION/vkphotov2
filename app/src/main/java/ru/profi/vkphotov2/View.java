@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 /**
  * Created by Kamo Spertsyan on 09.03.2017.
  */
-public interface ViewBase {
+public interface View {
 
     Context getContext();
 

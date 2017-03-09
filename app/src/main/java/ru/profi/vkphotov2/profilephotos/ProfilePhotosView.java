@@ -2,12 +2,12 @@ package ru.profi.vkphotov2.profilephotos;
 
 import android.content.Intent;
 
-import ru.profi.vkphotov2.ViewBase;
+import ru.profi.vkphotov2.View;
 
 /**
  * Created by Kamo Spertsyan on 07.03.2017.
  */
-public interface ProfilePhotosView extends ViewBase {
+public interface ProfilePhotosView extends View {
 
     void startActivity(Intent intent);
 

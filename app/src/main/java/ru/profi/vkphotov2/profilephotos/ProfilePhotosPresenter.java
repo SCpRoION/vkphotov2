@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import ru.profi.vkphotov2.PhotoPresenterBase;
+import ru.profi.vkphotov2.BasePhotoPresenter;
 import ru.profi.vkphotov2.fullscreenphoto.FullscreenPhotoActivity;
 import ru.profi.vkphotov2.fullscreenphoto.Photo;
 import ru.profi.vkphotov2.social.APIManager;
@@ -16,7 +16,7 @@ import ru.profi.vkphotov2.social.APIManager;
 /**
  * Created by Kamo Spertsyan on 26.02.2017.
  */
-public class ProfilePhotosPresenter extends PhotoPresenterBase {
+public class ProfilePhotosPresenter extends BasePhotoPresenter {
 
     private ProfilePhotosView view;   /** Вьюха для отображения */
 

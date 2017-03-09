@@ -4,13 +4,13 @@ import android.support.v4.app.LoaderManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import ru.profi.vkphotov2.PhotoPresenterBase;
+import ru.profi.vkphotov2.BasePhotoPresenter;
 import ru.profi.vkphotov2.profilephotos.ProfilePhotos;
 
 /**
  * Created by Kamo Spertsyan on 24.02.2017.
  */
-public class PhotoPresenter extends PhotoPresenterBase {
+public class PhotoPresenter extends BasePhotoPresenter {
 
     private PhotoView view;   /** Активити для отображения */
 
