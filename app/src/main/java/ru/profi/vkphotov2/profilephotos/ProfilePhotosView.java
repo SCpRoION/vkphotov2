@@ -1,18 +1,13 @@
 package ru.profi.vkphotov2.profilephotos;
 
-import android.app.LoaderManager;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+
+import ru.profi.vkphotov2.ViewBase;
 
 /**
  * Created by Kamo Spertsyan on 07.03.2017.
  */
-public interface ProfilePhotosView {
-
-    Context getContext();
-
-    LoaderManager getLoaderManager();
+public interface ProfilePhotosView extends ViewBase {
 
     void startActivity(Intent intent);
 
@@ -37,13 +32,6 @@ public interface ProfilePhotosView {
      * @return размер активной области сетки в пикселях
      */
     int getGridActiveWidth();
-
-    /**
-     * Показать фотографию с заданным идентификатором
-     * @param photo фотография
-     * @param id идентификатор фотографии
-     */
-    void showPhoto(Bitmap photo, int id);
 
     /**
      * Добавить форму для добавления фотографии

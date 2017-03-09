@@ -1,28 +1,15 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
-import android.app.LoaderManager;
-import android.content.Context;
-import android.graphics.Bitmap;
+import ru.profi.vkphotov2.ViewBase;
 
 /**
  * Created by Kamo Spertsyan on 07.03.2017.
  */
-public interface PhotoView {
-
-    Context getContext();
-
-    LoaderManager getLoaderManager();
+public interface PhotoView extends ViewBase {
 
     /**
      * Узнать ширину активной области окна
      * @return ширина активной области окна
      */
     int getActiveWidth();
-
-    /**
-     * Показать фотографию с заданным идентификатором
-     * @param photo фотография
-     * @param id идентификатор фотографии
-     */
-    void showPhoto(Bitmap photo, int id);
 }
