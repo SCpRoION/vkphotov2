@@ -1,9 +1,9 @@
 package ru.profi.vkphotov2;
 
 import android.content.Context;
-import android.app.LoaderManager;
-import android.content.Loader;
-import android.content.AsyncTaskLoader;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.support.v4.content.AsyncTaskLoader;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;

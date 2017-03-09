@@ -1,6 +1,6 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
-import android.app.LoaderManager;
+import android.support.v4.app.LoaderManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 

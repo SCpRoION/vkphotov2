@@ -1,6 +1,6 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
-import android.app.LoaderManager;
+import android.support.v4.app.LoaderManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
@@ -25,7 +25,7 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
         setContentView(R.layout.activity_fullscreen_photo);
 
         presenter = new PhotoPresenter(this);
-        loaderManager = getLoaderManager();
+        loaderManager = getSupportLoaderManager();
 
         // Настройка свапйпинга
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
