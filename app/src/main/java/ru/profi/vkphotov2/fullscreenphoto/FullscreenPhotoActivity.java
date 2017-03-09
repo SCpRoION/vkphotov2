@@ -1,5 +1,6 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
+import android.app.LoaderManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
@@ -16,6 +17,7 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
 
     public static final String EXTRA_PHOTO_ID = "photo_id";     // Ключ для передаваемого в интенте идентификатора фотографии
     public PhotoPresenter presenter;
+    private LoaderManager loaderManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
         setContentView(R.layout.activity_fullscreen_photo);
 
         presenter = new PhotoPresenter(this);
+        loaderManager = getLoaderManager();
 
         // Настройка свапйпинга
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -52,6 +55,11 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
         if (imageView != null) {
             imageView.setImageBitmap(photo);
         }
+    }
+
+    @Override
+    public LoaderManager loaderManager() {
+        return loaderManager;
     }
 
     private class ImagePagerAdapter extends PagerAdapter {

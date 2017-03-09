@@ -1,5 +1,6 @@
 package ru.profi.vkphotov2.profilephotos;
 
+import android.app.LoaderManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
 
     private ProfilePhotosPresenter presenter;
     private PhotosGridLayout grid;
+    private LoaderManager loaderManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_photos_grid);
 
         grid = (PhotosGridLayout) findViewById(R.id.preview_grid);
+        loaderManager = getLoaderManager();
 
         presenter = new ProfilePhotosPresenter(this);
         presenter.onCreate();
@@ -76,6 +79,11 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         presenter.photoSelected(v.getId());
+    }
+
+    @Override
+    public LoaderManager loaderManager() {
+        return loaderManager;
     }
 
     /**

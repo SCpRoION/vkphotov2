@@ -63,7 +63,7 @@ public class PhotoPresenter extends PhotoPresenterBase {
 
     @Override
     public LoaderManager getLoaderManager() {
-        return view.getLoaderManager();
+        return view.loaderManager();
     }
 
     @Override

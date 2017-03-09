@@ -11,7 +11,7 @@ public interface ViewBase {
 
     Context getContext();
 
-    LoaderManager getLoaderManager();
+    LoaderManager loaderManager();
 
     /**
      * Показать фотографию с заданным идентификатором

@@ -72,7 +72,7 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
 
     @Override
     public LoaderManager getLoaderManager() {
-        return view.getLoaderManager();
+        return view.loaderManager();
     }
 
     @Override
