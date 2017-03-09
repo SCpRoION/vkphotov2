@@ -1,5 +1,7 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
+import android.app.LoaderManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import ru.profi.vkphotov2.PhotoPresenterBase;
@@ -52,6 +54,16 @@ public class PhotoPresenter extends PhotoPresenterBase {
     @Override
     public void onDestroy() {
 
+    }
+
+    @Override
+    protected Context getContext() {
+        return view.getContext();
+    }
+
+    @Override
+    public LoaderManager getLoaderManager() {
+        return view.getLoaderManager();
     }
 
     @Override

@@ -1,11 +1,17 @@
 package ru.profi.vkphotov2.fullscreenphoto;
 
+import android.app.LoaderManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 
 /**
  * Created by Kamo Spertsyan on 07.03.2017.
  */
 public interface PhotoView {
+
+    Context getContext();
+
+    LoaderManager getLoaderManager();
 
     /**
      * Узнать ширину активной области окна

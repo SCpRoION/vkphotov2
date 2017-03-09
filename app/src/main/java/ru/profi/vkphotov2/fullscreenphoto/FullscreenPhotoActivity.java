@@ -35,6 +35,11 @@ public class FullscreenPhotoActivity extends AppCompatActivity implements PhotoV
     }
 
     @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
     public int getActiveWidth() {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);

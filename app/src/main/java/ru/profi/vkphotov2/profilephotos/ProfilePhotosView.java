@@ -1,5 +1,6 @@
 package ru.profi.vkphotov2.profilephotos;
 
+import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +11,8 @@ import android.graphics.Bitmap;
 public interface ProfilePhotosView {
 
     Context getContext();
+
+    LoaderManager getLoaderManager();
 
     void startActivity(Intent intent);
 

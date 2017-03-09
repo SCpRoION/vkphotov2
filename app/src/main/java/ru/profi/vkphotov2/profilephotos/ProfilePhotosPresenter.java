@@ -1,5 +1,7 @@
 package ru.profi.vkphotov2.profilephotos;
 
+import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -59,6 +61,16 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
     @Override
     public void onDestroy() {
 
+    }
+
+    @Override
+    protected Context getContext() {
+        return view.getContext();
+    }
+
+    @Override
+    public LoaderManager getLoaderManager() {
+        return view.getLoaderManager();
     }
 
     @Override
