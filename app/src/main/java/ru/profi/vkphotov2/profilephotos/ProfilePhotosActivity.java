@@ -28,6 +28,12 @@ public class ProfilePhotosActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
     public Context getContext() {
         return this;
     }

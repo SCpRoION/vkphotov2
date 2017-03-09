@@ -60,7 +60,9 @@ public class ProfilePhotosPresenter extends PhotoPresenterBase {
 
     @Override
     public void onDestroy() {
-
+        for (Photo photo : ProfilePhotos.getProfilePhotos()) {
+            photo.clearCache();
+        }
     }
 
     @Override

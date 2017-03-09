@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.util.LruCache;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +16,11 @@ public class Photo {
     public LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(1024 * 1024 * 1024) {
         protected int sizeOf(String key, Bitmap value) {
             return value.getByteCount();
+        }
+
+        @Override
+        protected void entryRemoved(boolean evicted, String key, Bitmap oldBitmap, Bitmap newBitmap) {
+            oldBitmap.recycle();
         }
     };
 
@@ -70,5 +74,12 @@ public class Photo {
      */
     public Bitmap getCached(String url) {
         return cache.get(url);
+    }
+
+    /**
+     * Очистить кеш фотографий
+     */
+    public void clearCache() {
+        cache.evictAll();
     }
 }
